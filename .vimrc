@@ -212,9 +212,9 @@ map <silent> <leader><cr> :noh<cr>
 "map <C-h> <C-W>h
 "map <C-l> <C-W>l
 
-" Moving through tabs
-map <C-l> :tabnext<cr>
-map <C-h> :tabprevious<cr>
+" Moving through buffers/tabs
+map <C-l> :exec tabpagenr('$') == 1 ? 'bn' : 'tabnext'<cr>
+map <C-h> :exec tabpagenr('$') == 1 ? 'bp' : 'tabprevious'<cr>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
