@@ -186,6 +186,11 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+" highlight characters that go over the 80 column limit
+"
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -262,7 +267,7 @@ set viminfo^=%
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l:%c
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
