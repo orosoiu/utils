@@ -149,7 +149,11 @@ set ffs=unix,dos,mac
 
 " font
 if has("gui_running")
-    set guifont=Ubuntu_Mono:h12:cANSI
+    if has("win32") || has("win16")
+        set guifont=Ubuntu_Mono:h12:cANSI
+    else
+        set guifont=Ubuntu\ Mono\ 12
+    endif
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
