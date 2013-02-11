@@ -23,6 +23,7 @@
 "       http://amix.dk/vim/vimrc.txt
 "
 " Sections:
+"    -> Vundle
 "    -> General
 "    -> VIM user interface
 "    -> Colors and Fonts
@@ -39,6 +40,20 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vundle
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+ set nocompatible               " be iMproved
+ filetype off                   " required!
+
+ set rtp+=~/.vim/bundle/vundle/
+ call vundle#rc()
+
+ " add bundles below
+ Bundle 'gmarik/vundle'
+ Bundle 'ervandew/supertab'
+ Bundle 'SirVer/ultisnips'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
