@@ -54,6 +54,7 @@
  Bundle 'gmarik/vundle'
  Bundle 'ervandew/supertab'
  Bundle 'SirVer/ultisnips'
+ Bundle 'tpope/vim-fugitive'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
