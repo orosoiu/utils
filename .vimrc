@@ -55,6 +55,7 @@
  Bundle 'ervandew/supertab'
  Bundle 'SirVer/ultisnips'
  Bundle 'tpope/vim-fugitive'
+ Bundle 'altercation/vim-colors-solarized'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -144,7 +145,7 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-colorscheme desert
+colorscheme solarized
 set background=dark
 
 " Set extra options when running in GUI mode
