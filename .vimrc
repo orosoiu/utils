@@ -155,7 +155,7 @@ if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
     " Maximize gvim window.
-    set lines=999 columns=999
+    " set lines=999 columns=999
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -205,8 +205,8 @@ set wrap "Wrap lines
 
 " highlight characters that go over the 80 column limit
 "
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" match OverLength /\%81v.\+/
 
 
 """"""""""""""""""""""""""""""
