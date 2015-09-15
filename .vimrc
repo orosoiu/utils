@@ -47,7 +47,7 @@
  set nocompatible               " be iMproved
  filetype off                   " required!
 
- set rtp+=~/.vim/bundle/vundle/
+ set rtp+=~/.vim/bundle/Vundle.vim/
  call vundle#rc()
 
  " add bundles below
@@ -145,8 +145,7 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-colorscheme solarized
-set background=dark
+set background=light
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -169,7 +168,7 @@ if has("gui_running")
     if has("win32") || has("win16")
         set guifont=Ubuntu_Mono:h12:cANSI
     else
-        set guifont=Ubuntu\ Mono\ 12
+        set guifont=Monaco:h13
     endif
 endif
 
