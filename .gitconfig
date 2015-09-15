@@ -1,0 +1,14 @@
+[user]
+    email = REDACTED
+    name = Ovidiu Rosoiu
+[push]
+    default = simple
+[alias]
+    st = status
+	pu = pull
+	fe = fetch
+	co = checkout
+	ci = commit
+	lg = log --graph --abbrev-commit --decorate --all --date=local --pretty=format:\"%Cgreen%h%Creset %Cblue%D%Creset %Cred%cn%Creset - %s %C(yellow)%cd%Creset\"
+[core]
+	editor = vim
