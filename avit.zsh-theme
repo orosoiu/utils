@@ -1,22 +1,28 @@
 # AVIT ZSH Theme
 
-PROMPT='$(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version) %{$fg[red]%}▶%{$reset_color%} '
+PROMPT='
+$(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
+%{$fg[$CARETCOLOR]%}▶%{$reset_color%} '
 
-PROMPT2='%{$fg[grey]%}◀%{$reset_color%} '
+PROMPT2='%{$fg[$CARETCOLOR]%}◀%{$reset_color%} '
 
-RPROMPT='$(_vi_status)$(_git_time_since_commit) $(git_prompt_status) ${_return_status}'
-#RPROMPT='$(_vi_status)%{$(echotc UP 1)%}$(_git_time_since_commit) $(git_prompt_status) ${_return_status}%{$(echotc DO 1)%}'
+RPROMPT='$(_vi_status)%{$(echotc UP 1)%}$(_git_time_since_commit) $(git_prompt_status) ${_return_status}%{$(echotc DO 1)%}'
 
-local _current_dir="%{$fg[blue]%}%3~%{$reset_color%} "
-local _return_status="%{$fg[red]%}%(?..⍉)%{$reset_color%}"
+local _current_dir="%{$fg_bold[blue]%}%3~%{$reset_color%} "
+local _return_status="%{$fg_bold[red]%}%(?..⍉)%{$reset_color%}"
 local _hist_no="%{$fg[grey]%}%h%{$reset_color%}"
 
-function _user_host() {
-  if [[ -n $SSH_CONNECTION ]]; then
-    me="%n@%m"
-  elif [[ $LOGNAME != $USER ]]; then
-    me="%n"
+function _current_dir() {
+  local _max_pwd_length="65"
+  if [[ $(echo -n $PWD | wc -c) -gt ${_max_pwd_length} ]]; then
+    echo "%{$fg_bold[blue]%}%-2~ ... %3~%{$reset_color%} "
+  else
+    echo "%{$fg_bold[blue]%}%~%{$reset_color%} "
   fi
+}
+
+function _user_host() {
+  me="%n@%m"
   if [[ -n $me ]]; then
     echo "%{$fg[cyan]%}$me%{$reset_color%}:"
   fi
@@ -31,6 +37,8 @@ function _vi_status() {
 function _ruby_version() {
   if {echo $fpath | grep -q "plugins/rvm"}; then
     echo "%{$fg[grey]%}$(rvm_prompt_info)%{$reset_color%}"
+  elif {echo $fpath | grep -q "plugins/rbenv"}; then
+    echo "%{$fg[grey]%}$(rbenv_prompt_info)%{$reset_color%}"
   fi
 }
 
@@ -69,7 +77,7 @@ function _git_time_since_commit() {
 if [[ $USER == "root" ]]; then
   CARETCOLOR="red"
 else
-  CARETCOLOR="white"
+  CARETCOLOR="red"
 fi
 
 MODE_INDICATOR="%{$fg_bold[yellow]%}❮%{$reset_color%}%{$fg[yellow]%}❮❮%{$reset_color%}"
@@ -84,13 +92,13 @@ ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[yellow]%}⚑ "
 ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%}✖ "
 ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[blue]%}▴ "
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[cyan]%}§ "
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[grey]%}◒ "
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[white]%}◒ "
 
 # Colors vary depending on time lapsed.
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_SHORT="%{$fg[green]%}"
 ZSH_THEME_GIT_TIME_SHORT_COMMIT_MEDIUM="%{$fg[yellow]%}"
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_LONG="%{$fg[red]%}"
-ZSH_THEME_GIT_TIME_SINCE_COMMIT_NEUTRAL="%{$fg[grey]%}"
+ZSH_THEME_GIT_TIME_SINCE_COMMIT_NEUTRAL="%{$fg[white]%}"
 
 # LS colors, made with http://geoff.greer.fm/lscolors/
 export LSCOLORS="exfxcxdxbxegedabagacad"

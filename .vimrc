@@ -47,7 +47,7 @@
  set nocompatible               " be iMproved
  filetype off                   " required!
 
- set rtp+=~/.vim/bundle/Vundle.vim/
+ set rtp+=~/.vim/bundle/vundle/
  call vundle#rc()
 
  " add bundles below
@@ -56,6 +56,7 @@
  Bundle 'SirVer/ultisnips'
  Bundle 'tpope/vim-fugitive'
  Bundle 'altercation/vim-colors-solarized'
+ Bundle 'scrooloose/nerdtree'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -145,7 +146,8 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-set background=light
+set background=dark
+colorscheme solarized
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -154,7 +156,9 @@ if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
     " Maximize gvim window.
-    " set lines=999 columns=999
+    set lines=48 columns=140
+    colorscheme solarized
+    set background=dark
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -168,7 +172,7 @@ if has("gui_running")
     if has("win32") || has("win16")
         set guifont=Ubuntu_Mono:h12:cANSI
     else
-        set guifont=Monaco:h13
+        set guifont=Source\ Code\ Pro\ Medium:h12
     endif
 endif
 
@@ -232,10 +236,17 @@ map <c-space> ?
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-"map <C-j> <C-W>j
-"map <C-k> <C-W>k
-"map <C-h> <C-W>h
-"map <C-l> <C-W>l
+map <A-j> <C-W>j
+map <A-k> <C-W>k
+map <A-h> <C-W>h
+map <A-l> <C-W>l
+
+if has("mac") || has("macunix")
+    map ∆ <C-W>j
+    map ˚ <C-W>k
+    map ˙ <C-W>h
+    map ¬ <C-W>l
+endif 
 
 " Moving through buffers/tabs
 map <C-l> :exec tabpagenr('$') == 1 ? 'bn' : 'tabnext'<cr>
@@ -467,4 +478,4 @@ endfunction
 
 command! PrettyXML call DoPrettyXML()
 map <leader>xml <Esc>:PrettyXML<CR>
-map <leader>json  <Esc>:%!json_xs -f json -t json-pretty<CR>
+map <leader>json  <Esc>:%!python -m json.tool<CR>
